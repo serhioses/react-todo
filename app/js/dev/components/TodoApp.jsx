@@ -1,6 +1,8 @@
 import React from 'react';
 
 import TodoList from 'TodoList';
+import AddTodo from 'AddTodo';
+import TodoSearch from 'TodoSearch';
 
 export default class TodoApp extends React.Component {
     constructor(props) {
@@ -16,16 +18,30 @@ export default class TodoApp extends React.Component {
                     id: 2,
                     text: 'Clean the yard'
                 }
-            ]
+            ],
+            showCompleted: false,
+            searchText: ''
         };
+
+        this.handleSearch = this.handleSearch.bind(this);
+    }
+    handleAddTodo(text) {
+        console.log('new todo: ' + text);
+    }
+    handleSearch(showCompleted, searchText) {
+        this.setState({
+            showCompleted: showCompleted,
+            searchText: searchText.toLowerCase()
+        });
     }
     render() {
         var {todos} = this.state;
 
         return (
             <div>
-                <p>TodoApp.jsx rendered.</p>
+                <TodoSearch onSearch={this.handleSearch}/>
                 <TodoList todos={todos}/>
+                <AddTodo onAddTodo={this.handleAddTodo}/>
             </div>
         );
     }
