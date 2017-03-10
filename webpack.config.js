@@ -26,7 +26,8 @@ module.exports = {
         root: __dirname,
         modulesDirectories: [
             'node_modules',
-            './app/js/dev/components'
+            './app/js/dev/components',
+            './app/js/dev/api'
         ],
         alias: {
             applicationStyles: 'app/css/style.css'
