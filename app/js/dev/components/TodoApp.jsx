@@ -6,6 +6,8 @@ import TodoSearch from 'TodoSearch';
 
 import todoAPI from 'todoAPI';
 
+import moment from 'moment';
+
 export default class TodoApp extends React.Component {
     constructor(props) {
         super(props);
@@ -27,6 +29,8 @@ export default class TodoApp extends React.Component {
         var updatedTodos = this.state.todos.map((todo) => {
             if (todo.id === id) {
                 todo.completed = !todo.completed;
+
+                todo.completedAt = todo.completed ? moment().unix() : null;
             }
             return todo;
         });
@@ -42,7 +46,9 @@ export default class TodoApp extends React.Component {
                 {
                     id: Date.now() * Math.random(),
                     text: text,
-                    completed: false
+                    completed: false,
+                    createdAt: Date.now() / 1000,
+                    completedAt: null
                 },
             ]
         });

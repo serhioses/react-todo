@@ -33,15 +33,6 @@ var todoAPI = {
 
         filteredTodos.sort((a, b) => {
             return a.completed && !b.completed ? 1 : !a.completed && b.completed ? -1 : 0;
-            // if (a.completed && b.completed) {
-            //     return 0;
-            // }
-            // if (a.completed && !b.completed) {
-            //     return 1;
-            // }
-            // if (!a.completed && b.completed) {
-            //     return -1
-            // }
         });
 
         return filteredTodos;
