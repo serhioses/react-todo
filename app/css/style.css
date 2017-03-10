@@ -1,0 +1,79 @@
+.page-title {
+    margin: 0;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.container {
+    margin-bottom: 2rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 0;
+    background-color: #fafafa;
+}
+.container__header {
+    border-bottom: 1px solid #eee;
+    padding: 1rem;
+}
+.container__header label {
+    font-size: 1rem;
+    cursor: pointer;
+}
+.container__header > :last-child {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+}
+.container__footer {
+    border-top: 1px solid #eee;
+    padding: 1rem 1rem 0 1rem;
+}
+.container__message {
+    margin: 2rem auto;
+    color: #aaa;
+    text-align: center;
+}
+
+.todo {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    -webkit-transition: background 0.3s ease;
+       -moz-transition: background 0.3s ease;
+        -ms-transition: background 0.3s ease;
+         -o-transition: background 0.3s ease;
+            transition: background 0.3s ease;
+}
+.todo-completed {
+    
+}
+.todo-completed p,
+.todo-completed .todo__subtext {
+    color: #aaa;
+    text-decoration: line-through;
+}
+.todo p {
+    margin: 0;
+}
+.todo input {
+    margin: 0;
+}
+.todo > :first-child {
+    margin-right: 1rem;
+}
+.todo:hover {
+    background: #f0f0f0;
+}
+.todo__subtext {
+    color: #999;
+}

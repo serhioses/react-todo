@@ -7,6 +7,7 @@ export default class Todo extends React.Component {
     }
     render() {
         var {id, text, completed, createdAt, completedAt} = this.props,
+            todoClassName = completed ? 'todo todo-completed' : 'todo',
             renderDate = () => {
                 return `Created ${moment.unix(createdAt).format('MMM Do YYYY @ h:mm a')}`;
             },
@@ -15,17 +16,21 @@ export default class Todo extends React.Component {
                     return null;
                 }
 
-                return <p>Completed {moment.unix(completedAt).format('MMM Do YYYY @ h:mm a')}</p>;
+                return <p className="todo__subtext">Completed {moment.unix(completedAt).format('MMM Do YYYY @ h:mm a')}</p>;
             };
 
         return (
-            <div onClick={() => {
+            <div className={todoClassName} onClick={() => {
                 this.props.onToggle(id);
             }}>
-                <input type="checkbox" checked={completed} />
-                <p>{text}</p>
-                <p>{renderDate()}</p>
-                {renderCompletedDate()}
+                <div>
+                    <input type="checkbox" checked={completed} />
+                </div>
+                <div>
+                    <p>{text}</p>
+                    <p className="todo__subtext">{renderDate()}</p>
+                    {renderCompletedDate()}
+                </div>
             </div>
         );
     }
