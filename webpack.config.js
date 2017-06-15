@@ -31,7 +31,8 @@ module.exports = {
         ],
         alias: {
             applicationStyles: 'app/css/style.css',
-            actions: 'app/js/dev/actions/actions.jsx'
+            actions: 'app/js/dev/actions/actions.jsx',
+            reducers: 'app/js/dev/reducers/reducers.jsx'
         }
     },
     module: {
