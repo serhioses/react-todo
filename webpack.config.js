@@ -30,7 +30,8 @@ module.exports = {
             './app/js/dev/api'
         ],
         alias: {
-            applicationStyles: 'app/css/style.css'
+            applicationStyles: 'app/css/style.css',
+            actions: 'app/js/dev/actions/actions.jsx'
         }
     },
     module: {
