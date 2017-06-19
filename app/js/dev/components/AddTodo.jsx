@@ -1,6 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default class AddTodo extends React.Component {
+import {addTodo} from 'actions';
+
+export class AddTodo extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +16,8 @@ export default class AddTodo extends React.Component {
 
         if (title.length) {
             this.refs.title.value = '';
-            this.props.onAddTodo(title);
+            // this.props.onAddTodo(title);
+            this.props.dispatch(addTodo(title));
         } else {
             this.refs.title.focus();
         }
@@ -29,3 +33,5 @@ export default class AddTodo extends React.Component {
         );
     }
 }
+
+export default connect()(AddTodo);

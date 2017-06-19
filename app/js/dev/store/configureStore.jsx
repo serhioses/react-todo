@@ -4,7 +4,7 @@ import {searchTextReducer, showCompletedReducer, todosReducer} from '../reducers
 export default (function () {
     var store;
 
-    return function configure () {
+    return function configure (initialState = {}) {
         var reducer;
 
         if (store) {
@@ -17,7 +17,7 @@ export default (function () {
             todos: todosReducer
         });
 
-        store = redux.createStore(reducer, redux.compose(
+        store = redux.createStore(reducer, initialState, redux.compose(
             window.devToolsExtension ? window.devToolsExtension() : f => f
         ));
 

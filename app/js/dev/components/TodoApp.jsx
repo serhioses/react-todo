@@ -18,41 +18,27 @@ export default class TodoApp extends React.Component {
             searchText: ''
         };
 
-        this.handleAddTodo = this.handleAddTodo.bind(this);
+        // this.handleAddTodo = this.handleAddTodo.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
-        this.handleToggle = this.handleToggle.bind(this);
+        // this.handleToggle = this.handleToggle.bind(this);
     }
     componentDidUpdate(prevProps, prevState) {
         todoAPI.setTodos(this.state.todos);
     }
-    handleToggle(id) {
-        var updatedTodos = this.state.todos.map((todo) => {
-            if (todo.id === id) {
-                todo.completed = !todo.completed;
-
-                todo.completedAt = todo.completed ? moment().unix() : null;
-            }
-            return todo;
-        });
-
-        this.setState({
-            todos: updatedTodos
-        });
-    }
-    handleAddTodo(text) {
-        this.setState({
-            todos: [
-                ...this.state.todos,
-                {
-                    id: Date.now() * Math.random(),
-                    text: text,
-                    completed: false,
-                    createdAt: Date.now() / 1000,
-                    completedAt: null
-                },
-            ]
-        });
-    }
+    // handleAddTodo(text) {
+    //     this.setState({
+    //         todos: [
+    //             ...this.state.todos,
+    //             {
+    //                 id: Date.now() * Math.random(),
+    //                 text: text,
+    //                 completed: false,
+    //                 createdAt: Date.now() / 1000,
+    //                 completedAt: null
+    //             },
+    //         ]
+    //     });
+    // }
     handleSearch(showCompleted, searchText) {
         this.setState({
             showCompleted: showCompleted,
@@ -67,11 +53,11 @@ export default class TodoApp extends React.Component {
             <div>
                 <h1 className="page-title">Todo App</h1>
                 <div className="row">
-                    <div className="column small-centered small-11  medium-6 large-5">
+                    <div className="column small-centered small-11 medium-6 large-5">
                         <div className="container">
                             <TodoSearch onSearch={this.handleSearch}/>
-                            <TodoList todos={filteredTodos} onToggle={this.handleToggle}/>
-                            <AddTodo onAddTodo={this.handleAddTodo}/>
+                            <TodoList/>
+                            <AddTodo/>
                         </div>
                     </div>
                 </div>
