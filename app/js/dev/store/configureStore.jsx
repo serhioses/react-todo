@@ -1,20 +1,26 @@
-// import * as redux from 'redux';
-// import {reducer} from '../reducers/index';
+import * as redux from 'redux';
+import {searchTextReducer, showCompletedReducer, todosReducer} from '../reducers/reducers';
 
-// export default (function () {
-//     var store;
+export default (function () {
+    var store;
 
-//     return function configure () {
-//         var reducer;
+    return function configure () {
+        var reducer;
 
-//         if (store) {
-//             return store;
-//         }
+        if (store) {
+            return store;
+        }
 
-//         store = redux.createStore(reducer, redux.compose(
-//             window.devToolsExtension ? window.devToolsExtension() : f => f
-//         ));
+        reducer = redux.combineReducers({
+            searchText: searchTextReducer,
+            showCompleted: showCompletedReducer,
+            todos: todosReducer
+        });
 
-//         return store;
-//     };
-// }())
+        store = redux.createStore(reducer, redux.compose(
+            window.devToolsExtension ? window.devToolsExtension() : f => f
+        ));
+
+        return store;
+    };
+}())
