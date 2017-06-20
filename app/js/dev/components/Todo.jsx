@@ -40,10 +40,4 @@ export class Todo extends React.Component {
     }
 }
 
-export default connect(
-    (state) => {
-        return {
-
-        };
-    }
-)(Todo);
+export default connect()(Todo);

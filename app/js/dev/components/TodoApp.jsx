@@ -19,7 +19,7 @@ export default class TodoApp extends React.Component {
         };
 
         // this.handleAddTodo = this.handleAddTodo.bind(this);
-        this.handleSearch = this.handleSearch.bind(this);
+        // this.handleSearch = this.handleSearch.bind(this);
         // this.handleToggle = this.handleToggle.bind(this);
     }
     componentDidUpdate(prevProps, prevState) {
@@ -39,12 +39,12 @@ export default class TodoApp extends React.Component {
     //         ]
     //     });
     // }
-    handleSearch(showCompleted, searchText) {
-        this.setState({
-            showCompleted: showCompleted,
-            searchText: searchText.toLowerCase()
-        });
-    }
+    // handleSearch(showCompleted, searchText) {
+    //     this.setState({
+    //         showCompleted: showCompleted,
+    //         searchText: searchText.toLowerCase()
+    //     });
+    // }
     render() {
         var {todos, showCompleted, searchText} = this.state,
             filteredTodos = todoAPI.filterTodos(todos, showCompleted, searchText);
@@ -55,7 +55,7 @@ export default class TodoApp extends React.Component {
                 <div className="row">
                     <div className="column small-centered small-11 medium-6 large-5">
                         <div className="container">
-                            <TodoSearch onSearch={this.handleSearch}/>
+                            <TodoSearch/>
                             <TodoList/>
                             <AddTodo/>
                         </div>
