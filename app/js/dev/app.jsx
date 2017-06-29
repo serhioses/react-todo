@@ -8,6 +8,8 @@ import todoAPI from 'todoAPI';
 import * as actions from 'actions';
 import configureStore from 'configureStore';
 
+// import './../../../playground/firebase';
+
 var store = configureStore(),
     initialTodos = todoAPI.getTodos();
 

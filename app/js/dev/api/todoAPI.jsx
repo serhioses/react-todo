@@ -1,3 +1,5 @@
+import firebase, {firebaseRef} from 'app/js/dev/firebase/';
+
 var todoAPI = {
     setTodos: function (todos) {
         if (!$.isArray(todos)) {

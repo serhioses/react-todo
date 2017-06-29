@@ -25,13 +25,7 @@ export function todosReducer (state = [], action) {
         case 'ADD_TODO': {
             return [
                 ...state,
-                {
-                    id: Date.now() * Math.random(),
-                    text: action.text,
-                    completed: false,
-                    createdAt: Date.now() / 1000,
-                    completedAt: null
-                }
+                action.todo
             ];
         }
         case 'ADD_TODOS': {

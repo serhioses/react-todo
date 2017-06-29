@@ -27,14 +27,24 @@ describe('Reducers', () => {
     });
     describe('Todos reducer', () => {
         it('should add new todo', () => {
-            var action = {
-                type: 'ADD_TODO',
-                text: 'Walk the dog'
-            },
-                response = reducers.todosReducer(df([]), df(action));
+            var todo, action, response;
+
+            todo = {
+                id: 1,
+                text: 'Some text',
+                completed: false,
+                createdAt: Date.now() / 1000,
+                completedAt: null
+            };
+            action = {
+               type: 'ADD_TODO',
+               todo
+            };
+            response = reducers.todosReducer(df([]), df(action));
 
             expect(response.length).toBe(1);
-            expect(response[0].text).toEqual(action.text);
+            expect(response[0].text).toEqual('Some text');
+            expect(response[0]).toEqual(todo);
         });
         it('should add new todos', () => {
             var todos = [{
@@ -54,12 +64,18 @@ describe('Reducers', () => {
             expect(response[0]).toEqual(todos[0]);
         });
         it('should toggle todo', () => {
-            var action, todos, response;
+            var action, todos, response, text;
 
-            todos = reducers.todosReducer([], {
-                type: 'ADD_TODO',
-                text: 'Walk the cat'
-            });
+            text = 'Feed the cat';
+            todos = [
+                {
+                    id: '54654654654',
+                    text,
+                    completed: false,
+                    completedAt: null,
+                    createdAt: 544554
+                }
+            ];
             action = {
                 type: 'TOGGLE_TODO',
                 id: todos[0].id
@@ -68,7 +84,7 @@ describe('Reducers', () => {
             response = reducers.todosReducer(df(todos), df(action));
 
             expect(response.length).toBe(1);
-            expect(response[0].text).toBe('Walk the cat');
+            expect(response[0].text).toBe(text);
             expect(response[0].completed).toBe(true);
             expect(response[0].completedAt).toNotBe(null);
         });
