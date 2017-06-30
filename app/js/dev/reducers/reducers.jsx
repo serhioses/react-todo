@@ -34,17 +34,29 @@ export function todosReducer (state = [], action) {
                 ...action.todos
             ];
         }
-        case 'TOGGLE_TODO': {
-            return state.map((todo) => {
-                var nextCompleted;
+        // case 'TOGGLE_TODO': {
+        //     return state.map((todo) => {
+        //         var nextCompleted;
 
-                if (todo.id === action.id) {
-                    nextCompleted = !todo.completed;
+        //         if (todo.id === action.id) {
+        //             nextCompleted = !todo.completed;
                     
+        //             return {
+        //                 ...todo,
+        //                 completed: nextCompleted,
+        //                 completedAt: nextCompleted ? moment().unix() : null
+        //             };
+        //         }
+
+        //         return todo;
+        //     });
+        // }
+        case 'UPDATE_TODO': {
+            return state.map((todo) => {
+                if (todo.id === action.id) {
                     return {
                         ...todo,
-                        completed: nextCompleted,
-                        completedAt: nextCompleted ? moment().unix() : null
+                        ...action.updates
                     };
                 }
 

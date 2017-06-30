@@ -1,4 +1,5 @@
 import firebase, {firebaseRef} from 'app/js/dev/firebase/';
+import moment from 'moment';
 
 export function setSearchText (searchText) {
     return {
@@ -48,9 +49,24 @@ export function toggleShowCompleted () {
     };
 }
 
-export function toggleTodo (id) {
+export function updateTodo (id, updates) {
     return {
-        type: 'TOGGLE_TODO',
-        id
+        type: 'UPDATE_TODO',
+        id,
+        updates
+    };
+}
+
+export function startUpdateTodo (id, completed) {
+    return (dispatch, getState) => {
+        var todoRef = firebaseRef.child(`todos/${id}`),
+            updates = {
+                completed,
+                completedAt: completed ? moment().unix() : null
+            };
+
+        return todoRef.update(updates).then(() => {
+            dispatch(updateTodo(id, updates));
+        });
     };
 }
