@@ -12,8 +12,8 @@ export default class TodoApp extends React.Component {
         return (
             <div>
                 <h1 className="page-title">Todo App</h1>
-                <div className="row">
-                    <div className="column small-centered small-11 medium-6 large-5">
+                <div className="grid-container grid-x">
+                    <div className="cell small-11 medium-6 large-5" style={{margin: '0 auto'}}>
                         <div className="container">
                             <TodoSearch/>
                             <TodoList/>

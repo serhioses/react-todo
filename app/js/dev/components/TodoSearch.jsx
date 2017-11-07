@@ -19,9 +19,9 @@ export class TodoSearch extends React.Component {
         var {dispatch, showCompleted, searchText, todos} = this.props;
 
         function countCompletedTodos () {
-            var completedTodosCount = todos.reduce((sum, current) => {
+            var completedTodosCount = todos ? todos.reduce((sum, current) => {
                 return sum + (current.completed ? 1 : 0);
-            }, 0);
+            }, 0) : 0;
 
             if (completedTodosCount) {
                 return ` (${completedTodosCount})`;
