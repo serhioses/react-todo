@@ -1,27 +1,27 @@
 import firebase, {firebaseRef} from 'app/js/dev/firebase/';
 
 var todoAPI = {
-    setTodos: function (todos) {
-        if (!$.isArray(todos)) {
-            return;
-        }
+    // setTodos: function (todos) {
+    //     if (!$.isArray(todos)) {
+    //         return;
+    //     }
 
-        localStorage.setItem('todos', JSON.stringify(todos));
+    //     localStorage.setItem('todos', JSON.stringify(todos));
 
-        return todos;
-    },
-    getTodos: function () {
-        var stringTodos = localStorage.getItem('todos'),
-            todos = [];
+    //     return todos;
+    // },
+    // getTodos: function () {
+    //     var stringTodos = localStorage.getItem('todos'),
+    //         todos = [];
 
-        try {
-            todos = JSON.parse(stringTodos);
-        } catch (err) {
+    //     try {
+    //         todos = JSON.parse(stringTodos);
+    //     } catch (err) {
 
-        }
+    //     }
 
-        return $.isArray(todos) ? todos : [];
-    },
+    //     return $.isArray(todos) ? todos : [];
+    // },
     filterTodos: function (todos, showCompleted, searchText) {
         var filteredTodos = todos;
 

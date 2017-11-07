@@ -1,5 +1,8 @@
-var webpack = require('webpack');
-var path = 'app/js/dev';
+const webpack = require('webpack'),
+    path = 'app/js/dev';
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 module.exports = {
     cache: true,
     debug: true,
@@ -15,10 +18,15 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                warnings: false
+            }
         })
     ],
     output: {
-        path: __dirname,
+        path: 'app/js/dist',
         filename: 'app.js'
     },
     resolve: {
@@ -49,5 +57,6 @@ module.exports = {
             }
         ]
     },
-    devtool: 'cheap-module-eval-source-map'
+    devtool: process.env.NODE_ENV === 'production' ? false : 'cheap-module-eval-source-map',
+    watch: process.env.NODE_ENV === 'production' ? false : true
 };

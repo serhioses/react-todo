@@ -16,7 +16,19 @@ export class TodoSearch extends React.Component {
         this.props.dispatch(toggleShowCompleted(showCompleted));
     }
     render() {
-        var {dispatch, showCompleted, searchText} = this.props;
+        var {dispatch, showCompleted, searchText, todos} = this.props;
+
+        function countCompletedTodos () {
+            var completedTodosCount = todos.reduce((sum, current) => {
+                return sum + (current.completed ? 1 : 0);
+            }, 0);
+
+            if (completedTodosCount) {
+                return ` (${completedTodosCount})`;
+            }
+
+            return null;
+        }
 
         return (
             <div className="container__header">
@@ -30,7 +42,7 @@ export class TodoSearch extends React.Component {
                         <input type="checkbox" defaultChecked={showCompleted} onChange={() => {
                             dispatch(toggleShowCompleted());
                         }} ref="showCompleted" />
-                        Show completed todos
+                        Show completed todos{countCompletedTodos()}
                     </label>
                 </div>
             </div>
@@ -41,6 +53,7 @@ export class TodoSearch extends React.Component {
 export default connect(
     (state) => {
         return {
+            todos: state.todos,
             searchText: state.searchText,
             showCompleted: state.showCompleted
         };

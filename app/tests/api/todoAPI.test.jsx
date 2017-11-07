@@ -11,45 +11,45 @@ describe('todoAPI', () => {
         expect(todoAPI).toExist();
     });
 
-    describe('setTodos', () => {
-        it('should set valid todos array', () => {
-            var todos = [{id: 122, text: 'Simple todo', completed: false}],
-                actualTodos;
+    // describe('setTodos', () => {
+    //     it('should set valid todos array', () => {
+    //         var todos = [{id: 122, text: 'Simple todo', completed: false}],
+    //             actualTodos;
 
-            todoAPI.setTodos(todos);
+    //         todoAPI.setTodos(todos);
 
-            actualTodos = JSON.parse(localStorage.getItem('todos'));
+    //         actualTodos = JSON.parse(localStorage.getItem('todos'));
 
-            expect(actualTodos).toEqual(todos);
-        });
+    //         expect(actualTodos).toEqual(todos);
+    //     });
 
-        it('should not set invalid todos array', () => {
-            var badTodos = {a: 'b'};
+    //     it('should not set invalid todos array', () => {
+    //         var badTodos = {a: 'b'};
 
-            todoAPI.setTodos(badTodos);
+    //         todoAPI.setTodos(badTodos);
 
-            expect(localStorage.getItem('todos')).toBe(null);
-        });
-    });
+    //         expect(localStorage.getItem('todos')).toBe(null);
+    //     });
+    // });
 
-    describe('getTodos', () => {
-        it('should return an empty array for bad localStorage data', () => {
-            var actualTodos = todoAPI.getTodos();
+    // describe('getTodos', () => {
+    //     it('should return an empty array for bad localStorage data', () => {
+    //         var actualTodos = todoAPI.getTodos();
 
-            expect(actualTodos).toEqual([]);
-        });
+    //         expect(actualTodos).toEqual([]);
+    //     });
 
-        it('should return todos if valid array in localStorage', () => {
-            var todos = [{id: 122, text: 'Simple todo', completed: false}],
-                actualTodos;
+    //     it('should return todos if valid array in localStorage', () => {
+    //         var todos = [{id: 122, text: 'Simple todo', completed: false}],
+    //             actualTodos;
 
-            localStorage.setItem('todos', JSON.stringify(todos));
+    //         localStorage.setItem('todos', JSON.stringify(todos));
 
-            actualTodos = todoAPI.getTodos();
+    //         actualTodos = todoAPI.getTodos();
 
-            expect(actualTodos).toEqual(todos);
-        });
-    });
+    //         expect(actualTodos).toEqual(todos);
+    //     });
+    // });
 
     describe('filterTodos', () => {
         var todos = [

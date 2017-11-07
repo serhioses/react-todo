@@ -43,6 +43,16 @@ export function addTodos (todos) {
     };
 }
 
+export function startAddTodos () {
+    return (dispatch, getState) => {
+        return firebaseRef.child('todos').once('value', (snapshot) => {
+            dispatch(addTodos(
+                Object.keys(snapshot.val() || {}).map((id) => ({...snapshot.val()[id], id}))
+            ));
+        });
+    };
+}
+
 export function toggleShowCompleted () {
     return {
         type: 'TOGGLE_SHOW_COMPLETED'
