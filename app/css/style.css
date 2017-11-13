@@ -77,3 +77,20 @@
 .todo__subtext {
     color: #999;
 }
+
+.page-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 2rem 0px 0;
+}
+
+.callout-auth {
+    border: 1px solid #ccc;
+    padding: 2rem;
+    background-color: #fafafa;
+    text-align: center;
+}
+.callout-auth h3,
+.callout-auth p {
+    margin-bottom: 2rem;
+}

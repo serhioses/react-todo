@@ -1,7 +1,8 @@
 import firebase from 'firebase';
 
-var config, firebaseRef;
-console.log(process.env);
+var config, firebaseRef,
+    githubProvider;
+
 try {
     config = {
         apiKey: process.env.API_KEY,
@@ -17,5 +18,8 @@ try {
 
 firebaseRef = firebase.database().ref();
 
+githubProvider = new firebase.auth.GithubAuthProvider();
+
+export {githubProvider};
 export {firebaseRef};
 export default firebase;

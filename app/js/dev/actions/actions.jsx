@@ -1,4 +1,4 @@
-import firebase, {firebaseRef} from 'app/js/dev/firebase/';
+import firebase, {firebaseRef, githubProvider} from 'app/js/dev/firebase/';
 import moment from 'moment';
 
 export function setSearchText (searchText) {
@@ -80,3 +80,22 @@ export function startUpdateTodo (id, completed) {
         });
     };
 }
+
+export function startLogin () {
+    return (dispatch, getState) => {
+        return firebase.auth().signInWithPopup(githubProvider)
+            .then((result) => {
+                console.log('Auth success: ', result);
+            }, (err) => {
+                console.log('Auth error: ', err);
+            });
+    };
+};
+export function startLogout () {
+    return (dispatch, getState) => {
+        return firebase.auth().signOut()
+            .then(() => {
+                console.log('Logged out');
+            });
+    };
+};

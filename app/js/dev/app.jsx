@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {Route, Router, IndexRoute, browserHistory} from 'react-router';
+
 import TodoApp from 'TodoApp';
+import Login from 'Login';
 
 import todoAPI from 'todoAPI';
 
@@ -45,7 +48,12 @@ import 'style!css!applicationStyles';
 
 ReactDOM.render(
     <Provider store={store}>
-        <TodoApp/>
+        <Router history={browserHistory}>
+            <Route path="/">
+                <IndexRoute component={Login} />
+                <Route path="todos" component={TodoApp} />
+            </Route>
+        </Router>
     </Provider>,
     document.getElementById('app')
 );
